@@ -96,8 +96,8 @@ function activityMapping(){
   rotate(a1);
   let s = random(100);
   let l = random(100);
-  // let wig = 5;
-  let wig = map(mouseX, 0, width, height*.01, 30);
+  let wig = random(5, 20);
+  // let wig = map(mouseX, 0, width, height*.01, 50);
   for (let i = 0; i < 25; i++){
 
     let a = map(light, 0, 1200, 175, 360);
