@@ -3,20 +3,24 @@ let lightList = []; //lightly active minutes
 let moderateList = []; //moderately active minutes
 let veryList = []; //very active minutes
 let sedentaryList = []; //sedentary minutes
+let stepList = []; //steps
 
 // Daily Cycle - variables for selceting and cycling throguh days
 let lightActive = [];
 let  moderateActive = [];
 let veryActive = []; 
 let notActive = [];
+let stepCount = [];
 let light_data, very_data, moderate_data, sedentary_data;
 let num_days; // number of days of data
 let day_num = 0;
+let num_steps; //number of step intervals
+let step_num = 0;
 let new_day = true; // starting data for a new night
 let day_index = 0; // index for each night
 let day_data_length; // number of data points for a night
 let day_data_index; // index for data points for a night
-let light, very, moderate, sedentary;
+let light, very, moderate, sedentary, steps;
 
 
 function preload(){
@@ -25,6 +29,7 @@ function preload(){
   moderateList = loadStrings('moderatelyActive-dataList.txt');
   veryList = loadStrings('veryActive-dataList.txt');
   sedentaryList = loadStrings('sedentary-dataList.txt');
+  stepList = loadStrings('steps-dataList.txt')
 }
 
 function setup() {
@@ -39,6 +44,7 @@ function setup() {
     moderateActive = loadJSON(moderateList[month]);
     veryActive = loadJSON(veryList[month]);
     notActive = loadJSON(sedentaryList[month]);
+    stepCount = loadJSON(stepList[month]);
 }
 
 function draw() {
@@ -49,6 +55,7 @@ function draw() {
   if (frameCount==100){
     num_days = Object.keys(lightActive).length;
     print(num_days);
+    num_steps = Object.keys(stepCount).length;
   }
 
   if (frameCount > 150){
@@ -57,13 +64,19 @@ function draw() {
     very = veryActive[day_num]['value'];
     moderate = moderateActive[day_num]['value'];
     sedentary = notActive[day_num]['value'];
-    print("light:", light, "very:", very, "moderate:", moderate, "sedentary:", sedentary);
+    steps = stepCount[step_num]['value'];
+    print("light:", light, "very:", very, "moderate:", moderate, "sedentary:", sedentary, "steps:", steps);
     day_num += 1;
+    step_num += 1;
 
     activityMapping();
     if (day_num >= num_days){
       day_num = 0;
       }
+    
+    if (step_num >= num_steps){
+      step_num = 0;
+    }
     }
   }
 
@@ -88,5 +101,12 @@ function activityMapping(){
     let w4 = map(sedentary, 0, 1500, 0, width);
     stroke(d, s, l);
     circle(w4, height*.8, 5*i);
+  }
+  let inside = map(steps, 0, 100, 50, 0)
+  noStroke();
+  fill(inside);
+  let stretch = map(steps, 0, 100, width, 200)
+  for (let i = 0; i < steps; i++){
+    rect(width + random(-stretch), 0 + random(stretch/2), random(25), random(25));
   }
 }
