@@ -89,12 +89,17 @@ function draw() {
 
 function activityMapping(){
   noFill();
-  
+  push();
+  translate(width*.5, height*.5)
+  scale(0.5)
+  let a1 = atan2(mouseY - height/2, mouseX - width/2);
+  rotate(a1);
   let s = random(100);
   let l = random(100);
   // let wig = 5;
-  let wig = map(mouseX, 0, width, height*.01, 50);
+  let wig = map(mouseX, 0, width, height*.01, 30);
   for (let i = 0; i < 25; i++){
+
     let a = map(light, 0, 1200, 175, 360);
     let w1 = map(light, 0, 1500, width*.75, width);
     stroke(a, s, l);
@@ -112,6 +117,7 @@ function activityMapping(){
     stroke(d, s, l);
     circle(w4, height*.8, wig*i);
   }
+  pop();
 
   // stepdust
   push();
