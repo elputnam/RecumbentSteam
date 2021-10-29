@@ -48,8 +48,8 @@ function setup() {
 }
 
 function draw() {
-  let back = map(very, 0, 50, 25, 0);
-  background(back, 1);
+  let back = map(very, 0, 50, 0, 175);
+  background(back, 100, 100, 1);
   // print(frameCount);
 
   if (frameCount==100){
@@ -102,11 +102,13 @@ function activityMapping(){
     stroke(d, s, l);
     circle(w4, height*.8, 5*i);
   }
+  push();
+  translate(width/2, height/2);
   let inside = map(steps, 0, 100, 50, 0)
   noStroke();
   fill(inside);
   let stretch = map(steps, 0, 100, width, 200)
   for (let i = 0; i < steps; i++){
-    rect(width + random(-stretch), 0 + random(stretch/2), random(25), random(25));
+    rect(0 + random(-stretch), 0 + random(stretch/2), random(25), random(25));
   }
 }
