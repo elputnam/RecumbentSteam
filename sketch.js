@@ -48,9 +48,16 @@ function setup() {
 }
 
 function draw() {
-  let back = map(very, 0, 50, 0, 175);
+  let back = map(very, 0, 50, 175, 0);
   background(back, 100, 100, 1);
   // print(frameCount);
+  if (frameCount < 150){
+    noStroke();
+    fill(random(175,200), random(100), random(100));
+    for (let l = 0; l < 500; l++){
+      circle(random(width), random(height), random(100));
+    }
+  }
 
   if (frameCount==100){
     num_days = Object.keys(lightActive).length;
@@ -82,33 +89,44 @@ function draw() {
 
 function activityMapping(){
   noFill();
+  
   let s = random(100);
   let l = random(100);
-  for (let i = 0; i < 15; i++){
+  // let wig = 5;
+  let wig = map(mouseX, 0, width, height*.01, 50);
+  for (let i = 0; i < 25; i++){
     let a = map(light, 0, 1200, 175, 360);
-    let w1 = map(light, 0, 1500, 0, width);
+    let w1 = map(light, 0, 1500, width*.75, width);
     stroke(a, s, l);
-    circle(w1, height*.2, 5*i);  
+    circle(w1, height*.2, wig*i);  
     let b = map(very, 0, 1200, 175, 360);
-    let w2 = map(very, 0, 1500, 0, width);
+    let w2 = map(very, 0, 1500, width*.25, width);
     stroke(b, s, l);
-    circle(w2, height*.4, 5*i);
+    circle(w2, height*.4, wig*i);
     let c = map(moderate, 0, 1200, 175, 360);
-    let w3 = map(moderate, 0, 1500, 0, width);
+    let w3 = map(moderate, 0, 1500, width*.5, width);
     stroke(c, s, l);
-    circle(w3, height*.6, 5*i);
+    circle(w3, height*.6, wig*i);
     let d = map(sedentary, 0, 1200, 175, 360);
     let w4 = map(sedentary, 0, 1500, 0, width);
     stroke(d, s, l);
-    circle(w4, height*.8, 5*i);
+    circle(w4, height*.8, wig*i);
   }
+
+  // stepdust
   push();
-  translate(width/2, height/2);
-  let inside = map(steps, 0, 100, 50, 0)
+  translate(width*.75, height*.4);
+  // let a = atan2(mouseY - height/2, mouseX - width/2);
+  // rotate(a);
+  let num1 = 200;
+  let cir = (360 / num1) * (frameCount % num1);
+  rotate((radians(cir)));
+  let inside = map(steps, 0, 100, 100, 0)
   noStroke();
   fill(inside);
   let stretch = map(steps, 0, 100, width, 200)
   for (let i = 0; i < steps; i++){
-    rect(0 + random(-stretch), 0 + random(stretch/2), random(25), random(25));
+    rect(0 + random(-stretch), 0 + random(stretch/2), random(inside), random(inside));
   }
+  pop();
 }
