@@ -50,7 +50,7 @@ function setup() {
 
 function draw() {
   let back = map(very, 0, 50, 175, 0);
-  background(back, 100, 100, 1);
+  background(back, 100, 100, random(1));
   // print(frameCount);
   if (frameCount < 150){
     noStroke();
@@ -78,7 +78,7 @@ function draw() {
     step_num += 1;
 
     activityMapping();
-    fill(random(20,50), 25, 100, 5);
+    fill(random(20,50), 25, 100, random(5));
     // beginShape();
     // curveVertex(width/2, height/2);
     // curveVertex(mouseX+random(100), mouseY+random(100));
