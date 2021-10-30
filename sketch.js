@@ -90,26 +90,27 @@ function draw() {
 function activityMapping(){
   noFill();
   push();
-  translate(width*.5, height*.5)
-  scale(0.5)
-  let a1 = atan2(mouseY - height/2, mouseX - width/2);
-  rotate(a1);
+  translate(mouseX*.25, mouseY*.5);
+  // translate(width*.25, height*.25)
+  scale(0.75)
+  // let a1 = atan2(mouseY - height/2, mouseX - width/2);
+  // rotate(a1);
+  rotate(radians(-25));
   let s = random(100);
   let l = random(100);
-  let wig = random(5, 20);
-  // let wig = map(mouseX, 0, width, height*.01, 50);
+  let wig = random(5, 10);
+  // let wig = map(mouseX, 0, width, 5, 25);
   for (let i = 0; i < 25; i++){
-
     let a = map(light, 0, 1200, 175, 360);
-    let w1 = map(light, 0, 1500, width*.75, width);
+    let w1 = map(light, 0, 1500, 0, width);
     stroke(a, s, l);
     circle(w1, height*.2, wig*i);  
     let b = map(very, 0, 1200, 175, 360);
-    let w2 = map(very, 0, 1500, width*.25, width);
+    let w2 = map(very, 0, 1500, 0, width);
     stroke(b, s, l);
     circle(w2, height*.4, wig*i);
     let c = map(moderate, 0, 1200, 175, 360);
-    let w3 = map(moderate, 0, 1500, width*.5, width);
+    let w3 = map(moderate, 0, 1500, 0, width);
     stroke(c, s, l);
     circle(w3, height*.6, wig*i);
     let d = map(sedentary, 0, 1200, 175, 360);
