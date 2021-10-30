@@ -36,6 +36,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 360, 100, 100, 100);
   background(0);
+  frameRate(15);
 
   //select month
   let month = int(random(18));
@@ -77,6 +78,8 @@ function draw() {
     step_num += 1;
 
     activityMapping();
+    fill(random(20,50), 25, 100, 20);
+    circle(mouseX, mouseY, width*.25);
     if (day_num >= num_days){
       day_num = 0;
       }
@@ -90,15 +93,15 @@ function draw() {
 function activityMapping(){
   noFill();
   push();
-  translate(mouseX*.25, mouseY*.5);
-  // translate(width*.25, height*.25)
+  // translate(mouseX*.25, mouseY*.5);
+  translate(width*.15, height*.3)
   scale(0.75)
   // let a1 = atan2(mouseY - height/2, mouseX - width/2);
   // rotate(a1);
   rotate(radians(-25));
   let s = random(100);
   let l = random(100);
-  let wig = random(5, 10);
+  let wig = random(width*.003, width*.007);
   // let wig = map(mouseX, 0, width, 5, 25);
   for (let i = 0; i < 25; i++){
     let a = map(light, 0, 1200, 175, 360);
