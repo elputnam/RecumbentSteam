@@ -78,7 +78,13 @@ function draw() {
     step_num += 1;
 
     activityMapping();
-    fill(random(20,50), 25, 100, 20);
+    fill(random(20,50), 25, 100, 5);
+    // beginShape();
+    // curveVertex(width/2, height/2);
+    // curveVertex(mouseX+random(100), mouseY+random(100));
+    // curveVertex(mouseX+random(-100,100), mouseY+random(200));
+    // curveVertex(mouseX+random(-100,100), mouseY+random(-100,100));
+    // endShape(CLOSE);
     circle(mouseX, mouseY, width*.25);
     if (day_num >= num_days){
       day_num = 0;
@@ -101,7 +107,8 @@ function activityMapping(){
   rotate(radians(-25));
   let s = random(100);
   let l = random(100);
-  let wig = random(width*.003, width*.007);
+  // let wig = random(width*.003, width*.007);
+  let wig = random(5,10);
   // let wig = map(mouseX, 0, width, 5, 25);
   for (let i = 0; i < 25; i++){
     let a = map(light, 0, 1200, 175, 360);
