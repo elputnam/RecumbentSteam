@@ -114,19 +114,19 @@ function activityMapping(){
     let a = map(light, 0, 1200, 175, 360);
     let w1 = map(light, 0, 1500, 0, width);
     stroke(a, s, l);
-    circle(w1, height*.2, wig*i);  
+    circle(w1, height*0, wig*i);  
     let b = map(very, 0, 1200, 175, 360);
     let w2 = map(very, 0, 1500, 0, width);
     stroke(b, s, l);
-    circle(w2, height*.4, wig*i);
+    circle(w2, height*.25, wig*i);
     let c = map(moderate, 0, 1200, 175, 360);
     let w3 = map(moderate, 0, 1500, 0, width);
     stroke(c, s, l);
-    circle(w3, height*.6, wig*i);
+    circle(w3, height*.5, wig*i);
     let d = map(sedentary, 0, 1200, 175, 360);
     let w4 = map(sedentary, 0, 1500, 0, width);
     stroke(d, s, l);
-    circle(w4, height*.8, wig*i);
+    circle(w4, height*.75, wig*i);
   }
   pop();
 
