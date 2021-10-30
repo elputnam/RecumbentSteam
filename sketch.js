@@ -85,7 +85,7 @@ function draw() {
     // curveVertex(mouseX+random(-100,100), mouseY+random(200));
     // curveVertex(mouseX+random(-100,100), mouseY+random(-100,100));
     // endShape(CLOSE);
-    circle(mouseX, mouseY, width*.25);
+    circle(mouseX, mouseY, height*.5);
     if (day_num >= num_days){
       day_num = 0;
       }
@@ -100,7 +100,7 @@ function activityMapping(){
   noFill();
   push();
   // translate(mouseX*.25, mouseY*.5);
-  translate(width*.15, height*.3)
+  translate(width*.15, height*.4)
   scale(0.75)
   // let a1 = atan2(mouseY - height/2, mouseX - width/2);
   // rotate(a1);
