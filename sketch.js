@@ -100,7 +100,7 @@ function activityMapping(){
   noFill();
   push();
   // translate(mouseX*.25, mouseY*.5);
-  translate(width*.15, height*.4)
+  translate(width*.05, height*.4)
   scale(0.75)
   // let a1 = atan2(mouseY - height/2, mouseX - width/2);
   // rotate(a1);
